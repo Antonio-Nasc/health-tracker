@@ -22,7 +22,7 @@ interface ActivityFormProps {
 
 const buildDefaultValues = (initialValues?: Partial<ActivityInput>): ActivityInput => ({
   title: initialValues?.title ?? "",
-  category: initialValues?.category ?? "walking",
+  category: initialValues?.category ?? "caminhando",
   date: initialValues?.date ?? new Date().toISOString().slice(0, 10),
   durationMinutes: initialValues?.durationMinutes ?? 30,
   calories: initialValues?.calories ?? 150,

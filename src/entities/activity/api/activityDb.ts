@@ -33,7 +33,7 @@ const createSeedActivities = (): Activity[] => {
     {
       id: "seed-1",
       title: "Corrida leve no parque",
-      category: "running",
+      category: "correndo",
       date: createDateLabelFromOffset(1),
       durationMinutes: 35,
       calories: 320,
@@ -45,7 +45,7 @@ const createSeedActivities = (): Activity[] => {
     {
       id: "seed-2",
       title: "Caminhada pós-almoço",
-      category: "walking",
+      category: "caminhando",
       date: createDateLabelFromOffset(2),
       durationMinutes: 40,
       calories: 180,
@@ -57,7 +57,7 @@ const createSeedActivities = (): Activity[] => {
     {
       id: "seed-3",
       title: "Treino funcional",
-      category: "workout",
+      category: "treinando",
       date: createDateLabelFromOffset(3),
       durationMinutes: 50,
       calories: 410,

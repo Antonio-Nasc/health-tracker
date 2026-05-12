@@ -2,18 +2,18 @@
  * Entities/FSD: tipos puros da entidade Activity, sem dependência de UI.
  */
 export const ACTIVITY_CATEGORIES = [
-  "running",
-  "walking",
-  "workout",
+  "correndo",
+  "caminhando",
+  "treinando",
   "yoga",
-  "cycling",
-  "swimming",
-  "other",
+  "ciclismo",
+  "natação",
+  "outros",
 ] as const;
 
 export type Category = (typeof ACTIVITY_CATEGORIES)[number];
 
-export type PeriodFilter = "weekly" | "monthly";
+export type PeriodFilter = "semanal" | "mensal";
 
 export interface Activity {
   id: string;
