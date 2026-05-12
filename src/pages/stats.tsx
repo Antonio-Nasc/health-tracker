@@ -39,8 +39,8 @@ export default function StatsPage({ generatedAt }: InferGetStaticPropsType<typeo
 
   const { data: activities = [], isLoading } = useActivities(filters);
   const totals = calculateTotals(activities);
-  const weekly = buildTrendData(activities, "weekly");
-  const monthly = buildTrendData(activities, "monthly");
+  const weekly = buildTrendData(activities, "semanal");
+  const monthly = buildTrendData(activities, "mensal");
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-5 px-4 py-6 md:px-8">
@@ -88,14 +88,14 @@ export default function StatsPage({ generatedAt }: InferGetStaticPropsType<typeo
 
       <section className="flex flex-wrap gap-2">
         <Button
-          variant={selectedPeriod === "weekly" ? "primary" : "secondary"}
-          onClick={() => setSelectedPeriod("weekly")}
+          variant={selectedPeriod === "semanal" ? "primary" : "secondary"}
+          onClick={() => setSelectedPeriod("semanal")}
         >
           Visão semanal
         </Button>
         <Button
-          variant={selectedPeriod === "monthly" ? "primary" : "secondary"}
-          onClick={() => setSelectedPeriod("monthly")}
+          variant={selectedPeriod === "mensal" ? "primary" : "secondary"}
+          onClick={() => setSelectedPeriod("mensal")}
         >
           Visão mensal
         </Button>
@@ -107,13 +107,13 @@ export default function StatsPage({ generatedAt }: InferGetStaticPropsType<typeo
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
           <ActivityTrendChart
             title="Calorias por período"
-            data={selectedPeriod === "weekly" ? weekly : monthly}
+            data={selectedPeriod === "semanal" ? weekly : monthly}
             metric="calories"
             visualization="bar"
           />
           <ActivityTrendChart
             title="Distância por período"
-            data={selectedPeriod === "weekly" ? weekly : monthly}
+            data={selectedPeriod === "semanal" ? weekly : monthly}
             metric="distanceKm"
           />
         </div>

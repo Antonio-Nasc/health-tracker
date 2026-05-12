@@ -15,8 +15,8 @@ export const useActivityInsights = (activities: Activity[]) =>
     () => ({
       totals: calculateTotals(activities),
       recentActivities: getRecentActivities(activities),
-      weeklyTrend: buildTrendData(activities, "weekly"),
-      monthlyTrend: buildTrendData(activities, "monthly"),
+      weeklyTrend: buildTrendData(activities, "semanal"),
+      monthlyTrend: buildTrendData(activities, "mensal"),
     }),
     [activities],
   );

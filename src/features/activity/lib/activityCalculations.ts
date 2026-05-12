@@ -75,7 +75,7 @@ export const buildTrendData = (
 ): ActivityTrendPoint[] => {
   const now = new Date();
 
-  if (period === "weekly") {
+  if (period === "semanal") {
     const points = Array.from({ length: 7 }, (_, index) => {
       const date = new Date(now);
       date.setDate(now.getDate() - (6 - index));

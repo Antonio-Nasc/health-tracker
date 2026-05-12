@@ -7,7 +7,7 @@ describe("healthStore", () => {
   beforeEach(() => {
     useHealthStore.setState({
       darkMode: false,
-      selectedPeriod: "weekly",
+      selectedPeriod: "semanal",
       filters: {
         category: "all",
         fromDate: null,
@@ -24,11 +24,11 @@ describe("healthStore", () => {
 
   it("define e limpa filtros", () => {
     const store = useHealthStore.getState();
-    store.setCategoryFilter("running");
+    store.setCategoryFilter("correndo");
     store.setDateRange("2026-05-01", "2026-05-10");
 
     expect(useHealthStore.getState().filters).toEqual({
-      category: "running",
+      category: "correndo",
       fromDate: "2026-05-01",
       toDate: "2026-05-10",
     });
