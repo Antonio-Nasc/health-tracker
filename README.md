@@ -1,40 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+﻿# HealthTracker
+
+A modern fitness activity tracker built with **Next.js + TypeScript**, using a modular architecture inspired by **Feature-Sliced Design (FSD)**.
+
+Track workouts, monitor calories/time/distance, filter by date and category, and visualize weekly/monthly progress with interactive charts.
+
+## Highlights
+
+- Modular architecture inspired by Feature-Sliced Design (FSD)
+- Activity CRUD (create, edit, delete)
+- Category and date filtering
+- Weekly and monthly analytics charts
+- Dark mode toggle
+- Toast/modal feedback for user actions
+- Local persistence with IndexedDB
+- Async caching and mutations with TanStack Query
+- Global UI state with Zustand
+- Responsive UI with Tailwind CSS
+- Unit tests for store, helpers, and hooks
+
+## Tech Stack
+
+- **Framework:** Next.js (Pages Router)
+- **Language:** TypeScript (strict mode)
+- **State Management:** Zustand
+- **Data Fetching/Cache:** TanStack Query
+- **Local Storage:** IndexedDB (`idb`)
+- **Charts:** Victory
+- **Styling:** Tailwind CSS
+- **Testing:** Jest + React Testing Library
+- **Code Quality:** ESLint + Prettier + Husky
+
+## Architecture (FSD-Inspired)
+
+```text
+src/
+├─ app/
+│  ├─ providers/          # Global providers (Query, theme, toast layer)
+│  └─ store/              # Zustand global store
+├─ entities/
+│  └─ activity/           # Core domain types + persistence layer
+├─ features/
+│  └─ activity/           # Feature hooks, business logic, UI blocks
+├─ pages/
+│  ├─ index.tsx           # Dashboard
+│  ├─ activities/[id].tsx # Activity details + edit
+│  └─ stats.tsx           # Weekly/monthly statistics
+├─ shared/
+│  ├─ ui/                 # Reusable UI components (Button, Input, Modal, Toast)
+│  └─ lib/                # Generic utilities (date/format helpers)
+└─ styles/
+   └─ globals.css
+```
+
+## Rendering Strategy
+
+- **Dashboard (`/`)**: SSG + ISR (`revalidate: 300`)
+- **Stats (`/stats`)**: SSG + ISR (`revalidate: 300`)
+- **Activity Detail (`/activities/[id]`)**: SSR
+
+> Persistent activity data is client-side (IndexedDB), while page shells follow Next.js rendering best practices.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/HealthTracker.git
+cd HealthTracker
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+npm run dev          # Start local development server
+npm run build        # Production build
+npm run start        # Run production server
+npm run lint         # Lint code
+npm run typecheck    # TypeScript checks
+npm run test         # Run unit tests
+npm run test:watch   # Watch mode tests
+npm run format       # Format code with Prettier
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project includes unit tests for:
 
-## Learn More
+- Zustand store behavior
+- Activity business logic helpers
+- TanStack Query activity hooks
 
-To learn more about Next.js, take a look at the following resources:
+Run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+```bash
+npm run test
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Quality Gates
 
-## Deploy on Vercel
+- Strict TypeScript settings
+- ESLint + Prettier setup
+- Husky pre-commit hook running lint and tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Roadmap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- Add authentication and cloud sync
+- Add goals and streaks
+- Add export/import (CSV/JSON)
+- Add E2E coverage with Playwright
+
+## License
+
+This project is licensed under the MIT License.
