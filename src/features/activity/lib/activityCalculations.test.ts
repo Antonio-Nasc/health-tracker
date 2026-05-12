@@ -12,7 +12,7 @@ const baseActivities: Activity[] = [
   {
     id: "1",
     title: "Corrida",
-    category: "running",
+    category: "correndo",
     date: "2026-05-10",
     durationMinutes: 40,
     calories: 300,
@@ -45,7 +45,7 @@ describe("activityCalculations", () => {
 
   it("aplica filtros de categoria e período", () => {
     const filtered = filterActivities(baseActivities, {
-      category: "running",
+      category: "correndo",
       fromDate: "2026-05-09",
       toDate: "2026-05-10",
     });
@@ -63,7 +63,7 @@ describe("activityCalculations", () => {
       },
     ];
 
-    const weeklyData = buildTrendData(activities, "weekly");
+    const weeklyData = buildTrendData(activities, "semanal");
     expect(weeklyData).toHaveLength(7);
     const caloriesSum = weeklyData.reduce((accumulator, point) => accumulator + point.calories, 0);
     expect(caloriesSum).toBe(300);

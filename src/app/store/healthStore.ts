@@ -44,7 +44,7 @@ const createToastId = () => `toast-${Date.now()}-${Math.random().toString(36).sl
 export const useHealthStore = create<HealthStoreState>((set) => ({
   darkMode: false,
   filters: defaultFilters,
-  selectedPeriod: "weekly",
+  selectedPeriod: "semanal",
   toasts: [],
   toggleDarkMode: () => set((state) => ({ darkMode: !state.darkMode })),
   setDarkMode: (enabled) => set({ darkMode: enabled }),
